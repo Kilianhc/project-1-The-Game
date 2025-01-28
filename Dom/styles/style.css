@@ -4,13 +4,24 @@ body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
+    overflow: hidden;
+}
+#intro-screen, #game-container, #game-screen, #end-game {
+    min-height: 100vh;
+}
+#intro-screen p{
+    font-size:larger;
 }
 #intro-screen {
     padding: 0;
     margin: 0;
+    background-image: url(/images/IMG_1974.PNG);
+    background-size: cover;
 }
 h1 {
-    margin-top: 50px;
+    margin-top: 0;
+    padding-top: 50px;
+    font-size: 50px;
 }
 #intro-screen img{
     width: 600px;
@@ -20,16 +31,16 @@ h1 {
     display: none;
     justify-content: center;
     width: 100vw;
-    padding: 70px 0px;
-    background-image: url(/images/IMG_1970.PNG);
-    background-size:cover;
+    background-image: url(/images/IMG_1971.png);
+    background-size: cover;
 }
 #stats {
+    margin-right: 10px;
     display: none;
-    margin-right: 50px;
     font-size: xx-large;
     font-weight: bold;
-    align-content: center;
+    align-content:first baseline;
+    color: white;
 }
 #score {
     color:forestgreen;
@@ -38,10 +49,11 @@ h1 {
     color: red;
 }
 #game-screen {
+    margin-bottom: 5px;
+    margin-top: 5px;
+    padding-right: 100px;
     display: none;
     align-content: center;
-    padding: 20px 0px;
-    overflow: hidden;
     position: relative;
     background-image: url(/images/IMG_1957.PNG);
     background-size:contain;
@@ -50,6 +62,10 @@ h1 {
 #end-game {
     display: none;
     flex-direction: column;
+    background-image: url(/images/EEZ9.gif);
+    background-size:cover;
+    font-size:x-large;
+    align-content:center;
 }
 #end-game h1{
     color: red;
@@ -65,16 +81,15 @@ h1 {
     border-radius: 10px;
     background-color: black;
     color: red;
-    font-size: xx-large
+    font-size: xx-large;
 }
 #start-button {
-    margin-top: 30px;
-    margin-bottom: 20px;
+    margin-top: 20px;
+    margin-bottom: 10px;
     background-image: url(/images/IMG_1961.PNG);
-    background-size: cover;
+    background-size:cover;
     height: 100px;
     width: 100px;
-    border: none;
-    background-color: white;
     cursor: pointer;
+    border: none;
 }
