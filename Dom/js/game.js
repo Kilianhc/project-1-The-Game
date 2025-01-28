@@ -16,7 +16,7 @@ class Game {
         this.width = 600
         this.defenses = []
         this.score = 0
-        this.time = 10
+        this.time = 60
         this.gameIsOver = false
         this.timeInterval = null
     }
@@ -31,6 +31,11 @@ class Game {
         this.gameEndScreen.style.display = "none"
 
         this.startTimer()
+        this.update()
+
+        this.defenseInterval = setInterval(() => {
+            this.generateDefense()
+        }, 2000)
     }
     startTimer() {
         const timeElement = document.getElementById("time")
@@ -46,10 +51,58 @@ class Game {
             }
         }, 1000)
     }
+
+    generateDefense() {
+        const newDefense = new Defense(this.gameScreen)
+        this.defenses.push(newDefense)
+    }
+
+    checkCollision(striker, defense) {
+        const strikerRect = striker.element.getBoundingClientRect()
+        const defenseRect = defense.element.getBoundingClientRect()
+
+        return !(
+            strikerRect.top > defenseRect.bottom ||
+            strikerRect.bottom < defenseRect.top ||
+            strikerRect.left > defenseRect.right ||
+            strikerRect.right < defenseRect.left
+        )
+    }
+
+    update() {
+        this.striker.move()
+
+        for(let i = 0; i < this.defenses.length; i++){
+            const defense = this.defenses[i]
+            defense.move()  
+        }
+
+        if(!this.gameIsOver){
+            requestAnimationFrame(() => this.update())
+        }
+    }
+
+    updateScore() {
+        const scoreElement = document.getElementById("score")
+        scoreElement.textContent = this.score
+    }
+    defenseRemoval(defense) {
+        defense.remove()
+        this.defenses.splice(this.defenses.indexOf(defense), 1)
+        this.score += 1
+        this.updateScore()
+    }
+
     endGame() {
         if(this.timeInterval) {
             clearInterval(this.timeInterval)
         }
+        if(this.defenseInterval) {
+            clearInterval(this.defenseInterval)
+        }
+
+        const recordElement = document.getElementById("record")
+        recordElement.textContent = this.score
 
         this.striker.element.remove()
         this.defenses.forEach(defense => defense.element.remove())
