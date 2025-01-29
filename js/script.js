@@ -3,13 +3,15 @@ window.onload = function () {
     const restartButton = document.getElementById("restart-button")
 
     let game;
-    let audioEnd = new Audio("./audios/615204__kbrecordzz__black-metal-groove-metal-song.mp3")
+    const audioEnd = new Audio("./audios/615204__kbrecordzz__black-metal-groove-metal-song.mp3")
     audioEnd.loop = true
-    let audioGame = new Audio("./audios/192450__marek97pl__cheering-lech-poznan-w-grodzie-przemysawa (1).mp3")
-
+    const audioGame = new Audio("./audios/192450__marek97pl__cheering-lech-poznan-w-grodzie-przemysawa (1).mp3")
+    const audioStart = new Audio("audios/Voz 006_sd (online-audio-converter.com).mp3")
 
     startButton.addEventListener("click", function () {
+        audioStart.play()
         audioGame.play()
+
         startGame()
     })
 

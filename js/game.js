@@ -101,16 +101,16 @@ class Game {
     defenseRemoval(defense) {
         defense.remove()
         this.defenses.splice(this.defenses.indexOf(defense), 1)
-        this.score += 1
-        this.updateScore()
-
-        if (this.score % 3 != 0) {
+        if (defense instanceof Defense) {
             const audioEliminate = new Audio("./audios/siuuu-made-with-Voicemod.mp3")
             audioEliminate.play()
+            this.score += 1
         } else {
             const audioEliminate = new Audio("./audios/cr_suuu.mp3")
             audioEliminate.play()
+            this.score += 3
         }
+        this.updateScore()
     }
 
     endGame() {
