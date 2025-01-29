@@ -3,24 +3,34 @@ window.onload = function () {
     const restartButton = document.getElementById("restart-button")
 
     let game;
+    let audioEnd = new Audio("./audios/615204__kbrecordzz__black-metal-groove-metal-song.mp3")
+    audioEnd.loop = true
+    let audioGame = new Audio("./audios/192450__marek97pl__cheering-lech-poznan-w-grodzie-przemysawa (1).mp3")
+
 
     startButton.addEventListener("click", function () {
+        audioGame.play()
         startGame()
     })
 
     function startGame() {
-        game = new Game()
+        game = new Game(audioEnd, audioGame)
         game.start()
     }
 
     restartButton.addEventListener("click", function(){
         if (game) {
+            audioEnd.pause()
+            audioEnd.currentTime = 0
+            audioGame.pause()
+            audioGame.currentTime = 0
             game.endGame()
         } 
         
         const scoreElement = document.getElementById("score");
         scoreElement.textContent = "0";
         startGame()
+        audioGame.play()
     })
 
     function keys(event) {

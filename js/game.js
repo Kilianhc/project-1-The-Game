@@ -1,5 +1,5 @@
 class Game {
-    constructor() {
+    constructor(audioEnd, audioGame) {
         this.introScreen = document.getElementById("intro-screen")
         this.gameScreen = document.getElementById("game-screen")
         this.gameEndScreen = document.getElementById("end-game")
@@ -19,9 +19,10 @@ class Game {
         this.time = 60
         this.gameIsOver = false
         this.timeInterval = null
-        this.audioIntro = new Audio("./audios/615204__kbrecordzz__black-metal-groove-metal-song.mp3")
-        this.audioEnd = new Audio("./audios/615204__kbrecordzz__black-metal-groove-metal-song.mp3")
-        this.audioIntro.loop = true;
+        this.audioEnd = audioEnd
+        this.audioEnd.loop = true;
+        this.audioGame = audioGame
+        this.audioGame.loop = true
     }
     start() {
         this.gameScreen.style.height = `${this.height}px`
@@ -33,13 +34,16 @@ class Game {
         this.containerScreen.style.display = "flex"
         this.gameEndScreen.style.display = "none"
 
+        this.audioGame.play()
         this.startTimer()
         this.update()
+        this.audioEnd.pause()
 
         this.defenseInterval = setInterval(() => {
             this.generateDefense()
         }, 2000)
     }
+
     startTimer() {
         const timeElement = document.getElementById("time")
         this.timeInterval = setInterval(() => {
@@ -48,7 +52,7 @@ class Game {
             const seconds = (this.time % 60).toString().padStart(2, "0")
             timeElement.textContent = `${minutes}:${seconds}`
 
-            if(this.time <= 0) {
+            if (this.time <= 0) {
                 clearInterval(this.timeInterval)
                 this.endGame()
             }
@@ -56,7 +60,9 @@ class Game {
     }
 
     generateDefense() {
-        const newDefense = new Defense(this.gameScreen)
+        const randomX = Math.floor(Math.random() * (this.width - 50))
+        const randomY = Math.floor(Math.random() * (this.height - 50))
+        const newDefense = new Defense(this.gameScreen, randomX, randomY)
         this.defenses.push(newDefense)
     }
 
@@ -75,12 +81,12 @@ class Game {
     update() {
         this.striker.move()
 
-        for(let i = 0; i < this.defenses.length; i++){
+        for (let i = 0; i < this.defenses.length; i++) {
             const defense = this.defenses[i]
-            defense.move()  
+            defense.move()
         }
 
-        if(!this.gameIsOver){
+        if (!this.gameIsOver) {
             requestAnimationFrame(() => this.update())
         }
     }
@@ -94,13 +100,21 @@ class Game {
         this.defenses.splice(this.defenses.indexOf(defense), 1)
         this.score += 1
         this.updateScore()
+
+        if (this.score % 3 != 0) {
+            const audioEliminate = new Audio("./audios/siuuu-made-with-Voicemod.mp3")
+            audioEliminate.play()
+        } else {
+            const audioEliminate = new Audio("./audios/cr_suuu.mp3")
+            audioEliminate.play()
+        }
     }
 
     endGame() {
-        if(this.timeInterval) {
+        if (this.timeInterval) {
             clearInterval(this.timeInterval)
         }
-        if(this.defenseInterval) {
+        if (this.defenseInterval) {
             clearInterval(this.defenseInterval)
         }
 
@@ -115,7 +129,10 @@ class Game {
         this.containerScreen.style.display = "none"
         this.gameEndScreen.style.display = "block"
 
-        this.audioIntro.pause();
-        this.audioEnd.play();
+        this.audioGame.pause()
+        this.audioGame.currentTime = 0
+        this.audioEnd.play()
+
+
     }
 }

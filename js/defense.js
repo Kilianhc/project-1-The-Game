@@ -1,8 +1,8 @@
 class Defense {
-    constructor(gameScreen) {
+    constructor(gameScreen, x, y) {
         this.gameScreen = gameScreen
-        this.left = Math.floor(Math.random() * 300 + 70)
-        this.top = 0
+        this.x = x
+        this.y = y
         this.width = 100
         this.height = 90
         this.element = document.createElement("img")
@@ -10,18 +10,15 @@ class Defense {
         this.element.style.position = "absolute"
         this.element.style.width = `${this.width}px`
         this.element.style.height = `${this.height}px`
-        this.element.style.left = `${this.left}px`
-        this.element.style.top = `${this.top}px`
+        this.element.style.left = `${this.x}px`
+        this.element.style.top = `${this.y}px`
 
         this.gameScreen.appendChild(this.element)
     }
-    updatePosition() {
-        this.element.style.left = `${this.left}px`
-        this.element.style.top = `${this.top}px`
-    }
+
     move() {
-        this.top += 3
-        this.updatePosition()
+        this.y += 3
+        this.element.style.top = `${this.y}px`
     }
     remove() {
         this.element.remove()
