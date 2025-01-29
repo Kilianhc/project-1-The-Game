@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="styles/style.css" />
+    <title>This is Football!</title>
+</head>
+
+<body>
+    <main>
+        <div id="intro-screen">
+            <h1>¡ This is Football !</h1>
+            <img src="./images/IMG_1964.PNG" alt="logo-img" />
+            <br />
+            <svg id="start-button"></svg>
+            <p>Press the ball to Start Game !</p>
+            <p>Use the arrows to control Zidane and key Tab to hit Materazzi</p>
+        </div>
+        <div id="game-container">
+            <div id="stats">
+                <p>Score: <span id="score">0</span></p>
+                <p>Time: <span id="time">01:00</span></p>
+            </div>
+            <div id="game-screen"></div>
+        </div>
+        <div id="end-game">
+            <img src="" alt="">
+            <h1>Game Over</h1>
+            <h2>Your score is <span id="record">0</span></h2>
+            <br />
+            <button id="restart-button">Try again !</button>
+        </div>
+    </main>
+
+    <script type="text/javascript" src="js/script.js"></script>
+    <script type="text/javascript" src="js/game.js"></script>
+    <script type="text/javascript" src="js/striker.js"></script>
+    <script type="text/javascript" src="js/defense.js"></script>
+</body>
+</html>

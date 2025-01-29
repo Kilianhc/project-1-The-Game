@@ -19,6 +19,9 @@ class Game {
         this.time = 60
         this.gameIsOver = false
         this.timeInterval = null
+        this.audioIntro = new Audio("./audios/615204__kbrecordzz__black-metal-groove-metal-song.mp3")
+        this.audioEnd = new Audio("./audios/615204__kbrecordzz__black-metal-groove-metal-song.mp3")
+        this.audioIntro.loop = true;
     }
     start() {
         this.gameScreen.style.height = `${this.height}px`
@@ -111,5 +114,8 @@ class Game {
         this.gameScreen.style.display = "none"
         this.containerScreen.style.display = "none"
         this.gameEndScreen.style.display = "block"
+
+        this.audioIntro.pause();
+        this.audioEnd.play();
     }
 }
