@@ -16,7 +16,7 @@ class Game {
         this.width = 600
         this.defenses = []
         this.score = 0
-        this.time = 20
+        this.time = 60
         this.gameIsOver = false
         this.timeInterval = null
         this.audioEnd = audioEnd

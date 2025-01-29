@@ -65,9 +65,6 @@ window.onload = function () {
                         const defense = game.defenses[i]
                         if(game.checkCollision(game.striker, defense)) {
                             game.defenseRemoval(defense)
-
-                            //const audioEliminate = new Audio()
-                            //audioEliminate.play()
                             break;
                         }
                     }
