@@ -41,7 +41,7 @@ class Game {
 
         this.defenseInterval = setInterval(() => {
             this.generateDefense()
-        }, 2000)
+        }, 1000)
     }
 
     startTimer() {

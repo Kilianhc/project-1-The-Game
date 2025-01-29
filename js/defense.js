@@ -20,7 +20,7 @@ class Defense {
         this.element.style.top = `${this.top}px`
     }
     move() {
-        this.top += 3
+        this.top += 4
         this.updatePosition()
     }
     remove() {

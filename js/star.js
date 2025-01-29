@@ -1,8 +1,8 @@
 class Star {
     constructor(gameScreen) {
        this.gameScreen = gameScreen
-       this.left = Math.floor(Math.random() * (gameScreen.offsetWidth - 100))
-       this.top = 0
+       this.left = Math.floor(Math.random() * 300 + 70)
+       this.bottom = 0
        this.width = 100
        this.height = 90
        this.element = document.createElement("img")
@@ -11,16 +11,16 @@ class Star {
        this.element.style.width = `${this.width}px`
        this.element.style.height = `${this.height}px`
        this.element.style.left = `${this.left}px`
-       this.element.style.top = `${this.top}px`
+       this.element.style.bottom = `${this.bottom}px`
 
        this.gameScreen.appendChild(this.element) 
     }
     updatePosition() {
         this.element.style.left = `${this.left}px`
-        this.element.style.top = `${this.top}px`
+        this.element.style.bottom = `${this.bottom}px`
     }
     move() {
-        this.top += 3
+        this.bottom += 4
         this.updatePosition()
     }
     remove() {
