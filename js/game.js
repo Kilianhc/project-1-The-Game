@@ -16,7 +16,7 @@ class Game {
         this.width = 600
         this.defenses = []
         this.score = 0
-        this.time = 60
+        this.time = 20
         this.gameIsOver = false
         this.timeInterval = null
         this.audioEnd = audioEnd
@@ -60,9 +60,12 @@ class Game {
     }
 
     generateDefense() {
-        const randomX = Math.floor(Math.random() * (this.width - 50))
-        const randomY = Math.floor(Math.random() * (this.height - 50))
-        const newDefense = new Defense(this.gameScreen, randomX, randomY)
+        let newDefense;
+        if(Math.random() < 0.7) {
+            newDefense = new Defense(this.gameScreen)
+        } else {
+            newDefense = new Star(this.gameScreen)
+        }
         this.defenses.push(newDefense)
     }
 
