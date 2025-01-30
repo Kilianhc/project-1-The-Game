@@ -7,7 +7,7 @@
 1. **Iniciar el juego:** Haz clic en el balón en la pantalla de inicio.
 2. **Mover a Zidane:** Usa las **flechas del teclado** para moverte.
 3. **Cabecear a Materazzi y Vini jr:** Presiona **Tab** para golpear a los defensores y ganar puntos.
-4. **No olvides que Vini vale 3 puntos y Materazzi 1 punto.
+4. No olvides que **Vini** vale **3 puntos** y **Materazzi 1 punto**.
 4. **Objetivo:** Acumula la mayor cantidad de puntos antes de que el tiempo llegue a 0.
 
 ## 🛠 Instalación
