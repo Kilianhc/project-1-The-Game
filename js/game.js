@@ -20,10 +20,9 @@ class Game {
         this.gameIsOver = false
         this.timeInterval = null
         this.audioEnd = audioEnd
-        this.audioEnd.loop = true;
         this.audioGame = audioGame
-        this.audioGame.loop = true
     }
+
     start() {
         this.gameScreen.style.height = `${this.height}px`
         this.gameScreen.style.width = `${this.width}px`
@@ -61,7 +60,7 @@ class Game {
 
     generateDefense() {
         let newDefense;
-        if(Math.random() < 0.7) {
+        if (Math.random() < 0.7) {
             newDefense = new Defense(this.gameScreen)
         } else {
             newDefense = new Star(this.gameScreen)
@@ -98,6 +97,7 @@ class Game {
         const scoreElement = document.getElementById("score")
         scoreElement.textContent = this.score
     }
+
     defenseRemoval(defense) {
         defense.remove()
         this.defenses.splice(this.defenses.indexOf(defense), 1)
@@ -135,7 +135,6 @@ class Game {
         this.audioGame.pause()
         this.audioGame.currentTime = 0
         this.audioEnd.play()
-
 
     }
 }

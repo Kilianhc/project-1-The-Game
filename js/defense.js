@@ -15,14 +15,22 @@ class Defense {
 
         this.gameScreen.appendChild(this.element)
     }
+
     updatePosition() {
         this.element.style.left = `${this.left}px`
         this.element.style.top = `${this.top}px`
     }
+
     move() {
         this.top += 4
-        this.updatePosition()
+        if (this.top + this.height > this.gameScreen.offsetHeight) {
+            this.remove()
+        } else {
+            this.updatePosition()
+        }
+
     }
+    
     remove() {
         this.element.remove()
     }
